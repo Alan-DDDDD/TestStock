@@ -1,0 +1,57 @@
+﻿@using System.Reflection
+@using System.ComponentModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+@*<h4>數量：@Model.Count</h4>*@
+@{
+    if (ViewBag.Code != null)
+    {
+        <form action="Privacy">
+            <input type="number" id="code" name="code" placeholder="股票代號" />
+            <input type="submit" id="submit" name="submit" />
+        </form>
+        <a href="Privacy?code=@ViewBag.Code&timeframe=D">日線</a>
+        <a href="Privacy?code=@ViewBag.Code&timeframe=W">周線</a>
+        <a href="Privacy?code=@ViewBag.Code&timeframe=M">月線</a>
+    }
+}
+<table style="border:solid 2px gray">
+    <thead>
+        <tr style="border:solid 2px gray">
+            @{
+                PropertyInfo[] properties = ViewBag.Type.GetType().GetProperties();
+                foreach (var property in properties)
+                {
+                    MemberInfo momberinfo = ViewBag.Type.GetType().GetProperty(property.Name);
+                    string name = momberinfo.GetCustomAttributes(typeof(DisplayNameAttribute), true).Cast<DisplayNameAttribute>().Single().DisplayName;
+                    <th style="border:solid 2px gray">@name</th>
+                }
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in ViewBag.Data)
+            {
+                <tr style="border:solid 2px gray">
+                    @{
+                        foreach (var property1 in properties)
+                        {
+                            <td style="border:solid 2px gray">@property1.GetValue(item)</td>
+                        }
+                    }
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+@*@section Scripts{
+    <script>
+    $(`#submit`).on(`click`,function(){
+    event.preventDefault();
+    $(`current`).val($(`code`).val());
+    this.onsubmit();
+    });
+    </script>
+    }*@

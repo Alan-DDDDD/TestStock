@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vQ8UAYLjp4v9YiOYoMxGvkOTCw3WoxNhQYxeClPonJ8WL6dh/wfGyl5Ltm7PBY0CwlYKfqZfGF1hS1LD3t3qrg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\alan1206\\source\\repos\\Stock_Model\\TestStock\\Stock_Model\\Stock_Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\alan1206\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
